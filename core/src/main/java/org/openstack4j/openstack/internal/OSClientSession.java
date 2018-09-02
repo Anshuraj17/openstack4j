@@ -26,6 +26,7 @@ import org.openstack4j.api.octavia.OctaviaService;
 import org.openstack4j.api.sahara.SaharaService;
 import org.openstack4j.api.senlin.SenlinService;
 import org.openstack4j.api.storage.BlockStorageService;
+import org.openstack4j.api.storage.BlockStorageServiceV3;
 import org.openstack4j.api.storage.ObjectStorageService;
 import org.openstack4j.api.tacker.TackerService;
 import org.openstack4j.api.telemetry.TelemetryAodhService;
@@ -169,6 +170,10 @@ public abstract class OSClientSession<R, T extends OSClient<T>> implements Endpo
      */
     public BlockStorageService blockStorage() {
         return Apis.get(BlockStorageService.class);
+    }
+
+    public BlockStorageServiceV3 blockStorageV3() {
+        return Apis.get(BlockStorageServiceV3.class);
     }
 
     /**
@@ -320,6 +325,10 @@ public abstract class OSClientSession<R, T extends OSClient<T>> implements Endpo
         return getSupportedServices().contains(ServiceType.BLOCK_STORAGE);
     }
 
+    public boolean supportsBlockStorageV3() {
+        return getSupportedServices().contains(ServiceType.BLOCK_STORAGE_V3);
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -416,7 +425,7 @@ public abstract class OSClientSession<R, T extends OSClient<T>> implements Endpo
         public String getEndpoint() {
             return access.getEndpoint();
         }
-        
+
         @Override
         public AuthVersion getAuthVersion() {
             return AuthVersion.V2;

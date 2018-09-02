@@ -3,6 +3,7 @@ package org.openstack4j.openstack.identity.v3.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.*;
 import org.openstack4j.model.identity.v3.Domain;
@@ -41,6 +42,7 @@ public class KeystoneProject implements Project {
     private String parents;
     private Boolean enabled = true;
     private Map<String, String> extra = new HashMap<String, String>();
+    private List<String> tags = new ArrayList<>();
 
     /**
      * @return the Project builder
@@ -167,6 +169,20 @@ public class KeystoneProject implements Project {
         }
         extra.put(key, value);
     }
+    
+    /**
+	 * @return the tags
+	 */
+	public List<String> getTags() {
+		return tags;
+	}
+	
+ 	/**
+	 * @param tags the tags to set
+	 */
+	public void setTags(List<String> tags) {
+		this.tags = tags;
+	}
 
     /**
      * set project enabled

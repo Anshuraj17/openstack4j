@@ -16,6 +16,7 @@ import org.openstack4j.api.octavia.OctaviaService;
 import org.openstack4j.api.sahara.SaharaService;
 import org.openstack4j.api.senlin.SenlinService;
 import org.openstack4j.api.storage.BlockStorageService;
+import org.openstack4j.api.storage.BlockStorageServiceV3;
 import org.openstack4j.api.storage.ObjectStorageService;
 import org.openstack4j.api.tacker.TackerService;
 import org.openstack4j.api.telemetry.TelemetryService;
@@ -131,6 +132,8 @@ public interface OSClient< T extends OSClient<T>> {
      */
     boolean supportsBlockStorage();
 
+    boolean supportsBlockStorageV3();
+
     /**
      * Determines if the Object Storage (Swift) service is supported
      *
@@ -207,6 +210,8 @@ public interface OSClient< T extends OSClient<T>> {
      * @return the block storage service
      */
     BlockStorageService blockStorage();
+
+    BlockStorageServiceV3 blockStorageV3();
 
     /**
      * Returns the Object Storage Service API
